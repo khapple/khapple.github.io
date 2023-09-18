@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Kerry Happle, Cybersecurity Professional</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Kerry Happle</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						 <ul class="links">
+							<li class="active"><a href="index.html">Home</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/khapple" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<h2><a href="#">Install ARM Kali Linux VM on Apple silicon using UTM</a></h2>
+									<p>This project consists of utilizing the ARM based installer for Kali Linux to create a Kali Linux virtual machine that runs natively on an Apple silicon based Mac using UTM.</p>
+								</header>
+								<img class="image main" src="https://i.imgur.com/x4SDhe8.png" alt="" />
+
+								<p><b>Utilities Used:</b></p>
+								<p><a href="https://mac.getutm.app">UTM</a><br />
+								<p><a href="https://www.kali.org/get-kali/#kali-installer-images">Kali Linux ARM Installer</a></p><br />
+
+								<p><b>Environments Used</b></p>
+								<p>Mac OS Ventura (13.5.2)</p>
+								<p>Kali Linux Virtual Machine (ARM64)</p><br />
+
+								<p><b>Walk-through:</b></p>
+								<p>Download <a href="https://mac.getutm.app">UTM</a> and <a href="https://www.kali.org/get-kali/#kali-installer-images">Kali Linux ARM Installer</a> make sure to select ARM64:</p>
+								<p>Kali Linux Virtual Machine (ARM64)</p><br />
+								<img class="image main" src="https://i.imgur.com/AECtZ9R.png" alt="Get UTM" />
+								<img class="image main" src="https://i.imgur.com/HUabTJ6.png" alt="Get Kali ARM64" />
+
+								<p>Launch UTM app and click create VM:</p>
+								<img class="image main" src="https://i.imgur.com/M5HWuFT.png" alt="Create VM" />
+
+								<p>Select Virtualize since we are using the ARM64 version which will run natively vs emulating:</p>
+								<img class="image main" src="https://i.imgur.com/BoZo8Xc.png" alt="Select Other" />
+
+								<p>We will select “Other” taking us to the next page:</p>
+								<img class="image main" src="https://i.imgur.com/hFV9CWc.png" alt="" />
+
+								<p>We will select our Kali Linux ARM64 iso as our boot image:</p>
+								<img class="image main" src="https://i.imgur.com/wQWUj0W.png" alt="" />
+
+								<p>We will leave the default settings on the Hardware page:</p>
+								<img class="image main" src="https://i.imgur.com/4sot1cd.png" alt="" />
+
+								<p>Here we will change the size of the virtual hard drive to 20gb for this virtual machine:</p>
+								<img class="image main" src="https://i.imgur.com/Jv8xTBf.png" alt="" />
+
+								<p>We will leave the default settings here, but if you would like a directory shared between the host and VM enable that:</p>
+								<img class="image main" src="https://i.imgur.com/4CYJB0T.png" alt="" />
+
+								<p>We will find ourselves at the summary page where we can name our VM.  I chose to simply name it "Kali Linux VM". We will save our settings:</p>
+								<img class="image main" src="https://i.imgur.com/f58ZuGc.png" alt="" />
+
+								<p>Due to a bug in UTM, we need to install Kali using a serial console.  We need to edit our virtual machine settings to enable the serial device:</p>
+								<img class="image main" src="https://i.imgur.com/DE6ITX3.png" alt="" />
+								<img class="image main" src="https://i.imgur.com/VC3wAc4.png" alt="" />
+
+								<p>Under Devices, select "+New" and add a new serial device:</p>
+								<img class="image main" src="https://i.imgur.com/Yplxw3P.png" alt="" />
+
+								<p>Leave the default serial device settings and save settings:</p>
+								<img class="image main" src="https://i.imgur.com/RgOHepH.png" alt="" />
+
+								<p>Now we can press play on the Kali Linux VM to launch the VM and installer.  We will go through the installation process selecting the appropriate settings as needed:</p>
+								<img class="image main" src="https://i.imgur.com/3Rvbubk.png" alt="" />
+
+								<p>Once the installation is finished, we need to remove the serial device:</p>
+								<img class="image main" src="https://i.imgur.com/SuvbVhv.png" alt="" />
+
+								<p>We also need to remove the Kali linux iso by changing the image type to none so the VM doesn't continue to boot from it instead of booting from the virtual hard drive:</p>
+								<img class="image main" src="https://i.imgur.com/x887r4v.png" alt="" />
+
+								<p>Now when we hit play on the VM, the VM will boot into Kali linux from the virtual hard drive:</p>
+								<img class="image main" src="https://i.imgur.com/HyqEvnM.png" alt="" />
+
+								<p>Finally, we can login to Kali linux using the user and password that we created during the install process:</p>
+								<img class="image main" src="https://i.imgur.com/x4SDhe8.png" alt="" />
+
+								<p>We will want to <a href="https://gist.github.com/plembo/21d4a1579850f7fe84301a90f4fcdf9a">install spice-vdagent</a> in order to enable additional features for the VM, mainly copy and paste to/from host and VM.</p>
+
+								<p>Source: <a href="https://www.kali.org/docs/virtualization/install-utm-guest-vm/">Kali inside UTM (Guest VM)</a></p>
+								
+							</article>
+					</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; 2023</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
